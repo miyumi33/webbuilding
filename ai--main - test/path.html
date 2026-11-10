@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="NEXUS AI 新成员学习路线：四个阶段、18–20 周，从 Python 与数学基础到第一个真实项目。">
+  <meta name="theme-color" content="#07090e">
+  <title>完整学习路线 · NEXUS AI</title>
+  <script>
+    (() => {
+      const key = 'nexus-theme';
+      let theme;
+      try { theme = localStorage.getItem(key); } catch (error) {}
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.style.colorScheme = theme;
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', theme === 'light' ? '#f3ede2' : '#07090e');
+    })();
+  </script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080a08'/%3E%3Cpath d='M32 8c1.4 13.7 9.2 21.5 22.9 22.9C41.2 32.3 33.4 40 32 53.8 30.6 40 22.8 32.3 9.1 30.9 22.8 29.5 30.6 21.7 32 8Z' fill='%237fa9ff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="page.css">
+</head>
+<body class="subpage">
+  <div id="particle-stage" class="particle-stage" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <svg class="svg-defs" aria-hidden="true" focusable="false">
+    <symbol id="icon-spark" viewBox="0 0 32 32">
+      <path d="M16 1.5c.8 8.6 5.9 13.7 14.5 14.5-8.6.8-13.7 5.9-14.5 14.5C15.2 21.9 10.1 16.8 1.5 16 10.1 15.2 15.2 10.1 16 1.5Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24">
+      <path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.28 5.28l1.42 1.42M17.3 17.3l1.42 1.42M5.28 18.72l1.42-1.42M17.3 6.7l1.42-1.42" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24">
+      <path d="M20.5 14.2A8.7 8.7 0 0 1 9.8 3.5a8.7 8.7 0 1 0 10.7 10.7Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <header class="page-header">
+    <div class="page-header-inner">
+      <a class="brand" href="index.html" aria-label="NEXUS AI 首页">
+        <span class="brand-mark">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-spark"></use></svg>
+        </span>
+        <span class="brand-copy">
+          <span class="brand-name">NEXUS<span>/AI</span></span>
+          <span class="brand-sub">大学人工智能协会</span>
+        </span>
+      </a>
+      <div class="page-header-actions">
+        <a class="back-link" href="index.html"><span aria-hidden="true">←</span> 返回首页</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换浅色或深色模式" title="切换浅色或深色模式">
+          <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-sun"></use></svg>
+          <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-moon"></use></svg>
+          <span class="theme-toggle-label" aria-hidden="true">
+            <span class="theme-toggle-label--to-light">浅色</span>
+            <span class="theme-toggle-label--to-dark">深色</span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main" id="main">
+    <section class="page-hero">
+      <div class="page-wrap">
+        <span class="page-kicker">Learning Path / 2026—27</span>
+        <h1 class="page-title">从零到第一个项目</h1>
+        <p class="page-lede">
+          这条路线是社团三年里反复打磨出来的：不追求把书读完，而是每一阶段都留下一个能跑的东西。
+          四周一次自检，卡住了直接找导师，不用一个人硬扛。
+        </p>
+        <div class="page-meta">
+          <span>4 个阶段</span>
+          <span>18 — 20 周</span>
+          <span>32 份配套资料</span>
+          <span>每周三更新</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="page-wrap">
+        <div class="section-head">
+          <h2 class="section-title">四个阶段</h2>
+          <span class="section-note">Self-paced · Mentor supported</span>
+        </div>
+
+        <details class="stage" open>
+          <summary>
+            <span class="stage-num">01</span>
+            <span class="stage-title">Python 与数学基础</span>
+            <span class="stage-weeks">4—6 周</span>
+          </summary>
+          <div class="stage-body">
+            <p>目标：能独立写脚本处理数据，看懂论文里的公式符号，不再被环境配置卡住。</p>
+            <ul>
+              <li>Python 语法、数据结构与函数，重点是写得出、跑得通。</li>
+              <li>NumPy 与向量化思维：把 for 循环换成数组运算。</li>
+              <li>线性代数、概率与微积分的最小必要集，够用就好。</li>
+              <li>Git 与虚拟环境：把自己的代码管起来，也敢提交 PR。</li>
+            </ul>
+            <div class="stage-links">
+              <a href="index.html#resources">Python 入门资料 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+              <a href="index.html#resources">数学速查笔记 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+            </div>
+          </div>
+        </details>
+
+        <details class="stage">
+          <summary>
+            <span class="stage-num">02</span>
+            <span class="stage-title">机器学习核心概念</span>
+            <span class="stage-weeks">6 周</span>
+          </summary>
+          <div class="stage-body">
+            <p>目标：知道一个模型为什么有效、什么时候会失效，并能完成一次完整的训练与评估。</p>
+            <ul>
+              <li>线性回归、逻辑回归与损失函数：从最小二乘到梯度下降。</li>
+              <li>树模型与评估指标：准确率之外，还要看召回与 AUC。</li>
+              <li>过拟合、正则化与数据泄漏：新手最常踩的三个坑。</li>
+              <li>一次完整的校内数据小赛，从清洗到提交。</li>
+            </ul>
+            <div class="stage-links">
+              <a href="index.html#resources">CS231n 精读笔记 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+            </div>
+          </div>
+        </details>
+
+        <details class="stage">
+          <summary>
+            <span class="stage-num">03</span>
+            <span class="stage-title">深度学习与 Transformer</span>
+            <span class="stage-weeks">8 周</span>
+          </summary>
+          <div class="stage-body">
+            <p>目标：能手写一次反向传播，读懂 Transformer，并微调一个属于自己的小模型。</p>
+            <ul>
+              <li>神经网络与反向传播：先手推一遍，再用 PyTorch 复现。</li>
+              <li>训练循环、学习率与显存：把模型真正训起来。</li>
+              <li>Attention 与 Transformer：从 Q / K / V 到多头注意力。</li>
+              <li>微调与评测：让一个小模型在你关心的任务上变好。</li>
+            </ul>
+            <div class="stage-links">
+              <a href="index.html#resources">Transformer 演进地图 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+              <a href="index.html#resources">RAG 实战教程 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+            </div>
+          </div>
+        </details>
+
+        <details class="stage">
+          <summary>
+            <span class="stage-num">04</span>
+            <span class="stage-title">选择方向，开始做项目</span>
+            <span class="stage-weeks">持续</span>
+          </summary>
+          <div class="stage-body">
+            <p>目标：加入一个在研项目，或者带着自己的想法组队，把它做到能被别人使用。</p>
+            <ul>
+              <li>六个方向任选：LLM &amp; Agents、Computer Vision、Embodied AI、AI × Design、AI Ethics、Creative ML。</li>
+              <li>进入三人小队，跟着项目组做两周一次的进度同步。</li>
+              <li>在 Demo Day 上公开演示，接受真实用户的评价。</li>
+            </ul>
+            <div class="stage-links">
+              <a href="index.html#projects">看看在研项目 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+              <a href="apply.html">申请加入 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="page-wrap">
+        <div class="section-head">
+          <h2 class="section-title">每周的节奏</h2>
+          <span class="section-note">Weekly Rhythm</span>
+        </div>
+        <div class="detail-grid">
+          <div class="card">
+            <ul class="note-list">
+              <li>周三：资料库更新，路线清单同步最新推荐。</li>
+              <li>周六下午：Paper Club 共读，从摘要读到实验部分。</li>
+              <li>周五晚：开放实验室，带着问题来，现场有人结对帮你调。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <ul class="note-list">
+              <li>每四周一次自检：用一个 20 分钟的小 Demo 说明你学到了什么。</li>
+              <li>导师 1v1：入社前三个月，每月一次 30 分钟的路线校正。</li>
+              <li>卡住超过两天，直接在群里问，不要一个人耗。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="page-wrap">
+        <div class="card">
+          <div class="section-head">
+            <h2 class="section-title">准备好开始了吗</h2>
+            <span class="section-note">No prerequisites</span>
+          </div>
+          <p class="body-copy">不需要先修完课程，也不需要作品集。带着你想做的那个东西来，我们帮你把它拆成第一步。</p>
+          <div class="cta-row">
+            <a class="button button-primary" href="apply.html">
+              <span>申请加入 NEXUS</span>
+              <span class="button-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+              </span>
+            </a>
+            <a class="button button-ghost" href="index.html#resources">
+              <span>先看学习资料</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <div class="page-footer-inner">
+      <span>© 2026 NEXUS AI SOCIETY</span>
+      <a href="index.html">返回首页 ↑</a>
+    </div>
+  </footer>
+
+  <script src="particle-net.js" defer></script>
+  <script src="theme.js" defer></script>
+  <script src="particles.js" defer></script>
+</body>
+</html>

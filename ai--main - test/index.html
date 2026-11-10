@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="NEXUS AI 大学人工智能协会官方网站。一起读论文、训练模型、做真实项目，在校园里探索智能的边界。">
+  <meta name="theme-color" content="#07090e">
+  <title>NEXUS AI · 大学人工智能协会</title>
+  <script>
+    (() => {
+      const key = 'nexus-theme';
+      let theme;
+      try { theme = localStorage.getItem(key); } catch (error) {}
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.style.colorScheme = theme;
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', theme === 'light' ? '#f3ede2' : '#07090e');
+    })();
+  </script>
+  <script>
+    /* Opening animation gate — runs before first paint so the page
+       never flashes, and disarms itself if intro.js fails to load.
+       Plays once per tab session; a manual reload replays it. */
+    (() => {
+      const root = document.documentElement;
+      let enabled = true;
+      try {
+        const forced = new URLSearchParams(window.location.search).get('intro');
+        if (forced === '1') {
+          enabled = true;
+        } else if (forced === '0') {
+          enabled = false;
+        } else {
+          const entry = window.performance.getEntriesByType('navigation')[0];
+          const isReload = entry ? entry.type === 'reload' : false;
+          enabled = isReload || window.sessionStorage.getItem('nexus-intro-seen') !== '1';
+        }
+      } catch (error) {
+        enabled = true;
+      }
+      if (!enabled) return;
+      root.classList.add('intro-play', 'intro-armed');
+      window.__NEXUS_INTRO__ = { done: false };
+      window.setTimeout(() => {
+        const api = window.__NEXUS_INTRO__;
+        if (api && api.done) return;
+        root.classList.remove('intro-play', 'intro-armed');
+        const splash = document.getElementById('nexus-intro');
+        if (splash) splash.remove();
+      }, 7000);
+    })();
+  </script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080a08'/%3E%3Cpath d='M32 8c1.4 13.7 9.2 21.5 22.9 22.9C41.2 32.3 33.4 40 32 53.8 30.6 40 22.8 32.3 9.1 30.9 22.8 29.5 30.6 21.7 32 8Z' fill='%237fa9ff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="intro.css">
+</head>
+<body>
+  <div class="intro" id="nexus-intro">
+    <span class="intro__grid" aria-hidden="true"></span>
+    <span class="intro__dust" aria-hidden="true"></span>
+    <span class="intro__glow" aria-hidden="true"></span>
+    <span class="intro__vignette" aria-hidden="true"></span>
+    <span class="intro__scan" aria-hidden="true"></span>
+    <span class="intro__beamline" aria-hidden="true"></span>
+
+    <div class="intro__frame" aria-hidden="true">
+      <span class="intro__corner intro__corner--tl"></span>
+      <span class="intro__corner intro__corner--tr"></span>
+      <span class="intro__corner intro__corner--bl"></span>
+      <span class="intro__corner intro__corner--br"></span>
+    </div>
+
+    <div class="intro__hud" aria-hidden="true">
+      <span>NEXUS // BOOT SEQUENCE</span>
+      <span>SYS.2026 / CAMPUS-NET</span>
+      <span>31.2304&deg; N 121.4737&deg; E</span>
+      <span>AI SOCIETY / v1.0.0</span>
+    </div>
+
+    <div class="intro__core">
+      <div class="intro__mark-wrap" aria-hidden="true">
+        <span class="intro__ring intro__ring--2"></span>
+        <span class="intro__ring intro__ring--1"></span>
+        <span class="intro__ring intro__ring--pulse"></span>
+        <svg class="intro__mark" viewBox="0 0 64 64" aria-hidden="true">
+          <path class="trace" pathLength="1" d="M32 8c1.4 13.7 9.2 21.5 22.9 22.9C41.2 32.3 33.4 40 32 53.8 30.6 40 22.8 32.3 9.1 30.9 22.8 29.5 30.6 21.7 32 8Z"/>
+          <path class="fill" d="M32 8c1.4 13.7 9.2 21.5 22.9 22.9C41.2 32.3 33.4 40 32 53.8 30.6 40 22.8 32.3 9.1 30.9 22.8 29.5 30.6 21.7 32 8Z"/>
+        </svg>
+      </div>
+
+      <p class="intro__word" aria-hidden="true">
+        <span class="ch" style="--i: 0">N</span><span class="ch" style="--i: 1">E</span><span class="ch" style="--i: 2">X</span><span class="ch" style="--i: 3">U</span><span class="ch" style="--i: 4">S</span><span class="ch ch--accent" style="--i: 5">/</span><span class="ch ch--accent" style="--i: 6">A</span><span class="ch ch--accent" style="--i: 7">I</span>
+      </p>
+
+      <span class="intro__rule" aria-hidden="true"></span>
+
+      <p class="intro__sub">
+        <span>大学人工智能协会</span><i>/</i><span><em>UNIVERSITY AI SOCIETY</em></span>
+      </p>
+
+      <div class="intro__console" data-intro-console aria-hidden="true"></div>
+
+      <div class="intro__meter" aria-hidden="true">
+        <span class="intro__meter-track"><span class="intro__meter-fill" data-intro-fill></span></span>
+        <span class="intro__meter-num" data-intro-num>000</span>
+      </div>
+    </div>
+
+    <button class="intro__skip" type="button" data-intro-skip aria-label="跳过开屏动画，直接进入网站">
+      <span>跳过</span><b>SKIP</b>
+    </button>
+  </div>
+  <div id="particle-stage" class="particle-stage" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <svg class="svg-defs" aria-hidden="true" focusable="false">
+    <symbol id="icon-arrow" viewBox="0 0 24 24">
+      <path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-arrow-down" viewBox="0 0 24 24">
+      <path d="M12 4v16m0 0 6-6m-6 6-6-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-spark" viewBox="0 0 32 32">
+      <path d="M16 1.5c.8 8.6 5.9 13.7 14.5 14.5-8.6.8-13.7 5.9-14.5 14.5C15.2 21.9 10.1 16.8 1.5 16 10.1 15.2 15.2 10.1 16 1.5Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24">
+      <path d="M12 4v16M4 12h16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24">
+      <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.28 5.28l1.42 1.42M17.3 17.3l1.42 1.42M5.28 18.72l1.42-1.42M17.3 6.7l1.42-1.42" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24">
+      <path d="M20.5 14.2A8.7 8.7 0 0 1 9.8 3.5a8.7 8.7 0 1 0 10.7 10.7Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="NEXUS AI 首页">
+        <span class="brand-mark">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-spark"></use></svg>
+        </span>
+        <span class="brand-copy">
+          <span class="brand-name">NEXUS<span>/AI</span></span>
+          <span class="brand-sub">大学人工智能协会</span>
+        </span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="主导航">
+        <a href="#about"><span>01</span>关于社团</a>
+        <a href="#projects"><span>02</span>项目进度</a>
+        <a href="#activities"><span>03</span>活动公告</a>
+        <a href="#resources"><span>04</span>学习资料</a>
+      </nav>
+
+      <div class="header-actions">
+        <span class="header-status"><i aria-hidden="true"></i>秋招开放中</span>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换浅色或深色模式" title="切换浅色或深色模式">
+          <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-sun"></use></svg>
+          <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-moon"></use></svg>
+          <span class="theme-toggle-label" aria-hidden="true">
+            <span class="theme-toggle-label--to-light">浅色</span>
+            <span class="theme-toggle-label--to-dark">深色</span>
+          </span>
+        </button>
+        <a class="header-join" href="apply.html">
+          加入我们
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+        </a>
+        <details class="mobile-menu">
+          <summary aria-label="打开导航菜单">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-menu"></use></svg>
+          </summary>
+          <nav aria-label="移动端导航">
+            <a href="#about"><span>01</span>关于社团</a>
+            <a href="#projects"><span>02</span>项目进度</a>
+            <a href="#activities"><span>03</span>活动公告</a>
+            <a href="#resources"><span>04</span>学习资料</a>
+            <a class="mobile-join" href="apply.html">加入 NEXUS <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+          </nav>
+        </details>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <div class="status-pill">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span>2026 秋季纳新 · 正在进行</span>
+            <span class="status-sep" aria-hidden="true"></span>
+            <span class="status-en">APPLY BY 11.30</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="title-line">在校园里，</span>
+            <span class="title-line"><span class="title-highlight">训练未来</span><span class="title-dot">。</span></span>
+          </h1>
+
+          <p class="hero-lede">
+            NEXUS AI 是一群跨专业学生组成的 AI 社团。我们读论文、训练模型、把 Demo 推成产品——让 AI 不只是课程作业，而是你留给校园的下一个作品。
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="apply.html">
+              <span>成为 NEXUS 成员</span>
+              <span class="button-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+              </span>
+            </a>
+            <a class="button button-ghost" href="#projects">
+              <span>看看我们在做什么</span>
+              <svg class="ghost-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow-down"></use></svg>
+            </a>
+          </div>
+
+          <div class="hero-stats" aria-label="社团数据">
+            <div class="hero-stat">
+              <span class="stat-value">128<sup>+</sup></span>
+              <span class="stat-label">来自 14 个专业的成员</span>
+            </div>
+            <div class="hero-stat">
+              <span class="stat-value">14</span>
+              <span class="stat-label">正在推进的项目</span>
+            </div>
+            <div class="hero-stat">
+              <span class="stat-value">36</span>
+              <span class="stat-label">本学期活动与分享</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="visual-float visual-float--top">
+            <span class="float-kicker">NEXT SESSION</span>
+            <span class="float-value">PAPER CLUB #12</span>
+            <span class="float-meta">11.14 / 14:00</span>
+          </div>
+
+          <div class="visual-frame">
+            <div class="frame-head">
+              <span class="frame-title"><i></i>NEXUS / ORBITAL CORE</span>
+              <span class="frame-status">SYS.ONLINE</span>
+            </div>
+
+            <div class="core-field">
+              <div class="axis axis--x" aria-hidden="true"></div>
+              <div class="axis axis--y" aria-hidden="true"></div>
+
+              <span class="coordinate coordinate--tl">31.2304° N<br>121.4737° E</span>
+              <span class="coordinate coordinate--br">FIG. 01 / LIVE SIGNAL</span>
+
+              <div class="orbit orbit--outer"></div>
+              <div class="orbit orbit--dashed"></div>
+              <div class="orbit orbit--inner"></div>
+
+              <div class="orbit-label orbit-label--a">LLM AGENTS</div>
+              <div class="orbit-label orbit-label--b">COMPUTER VISION</div>
+              <div class="orbit-label orbit-label--c">EMBODIED AI</div>
+
+              <span class="orbit-node orbit-node--one"></span>
+              <span class="orbit-node orbit-node--two"></span>
+              <span class="orbit-node orbit-node--three"></span>
+
+              <div class="core-orb">
+                <div class="orb-scan"></div>
+                <span class="orb-mark">
+                  <svg viewBox="0 0 32 32"><use href="#icon-spark"></use></svg>
+                </span>
+                <span class="orb-caption">NEXUS<br>CORE</span>
+              </div>
+
+              <div class="core-caption">
+                <span>INTELLIGENCE</span>
+                <span>IN PROGRESS</span>
+              </div>
+            </div>
+
+            <div class="frame-foot">
+              <div class="foot-metric">
+                <span class="foot-label">ACTIVE PROJECTS</span>
+                <strong>14 <em>/ 06 tracks</em></strong>
+              </div>
+              <div class="foot-metric">
+                <span class="foot-label">MEMBER NODES</span>
+                <strong>128 <em>online</em></strong>
+              </div>
+              <div class="foot-spark">
+                <div class="spark-bars">
+                  <i style="--h: 36%"></i><i style="--h: 58%"></i><i style="--h: 44%"></i><i style="--h: 72%"></i><i style="--h: 61%"></i><i style="--h: 88%"></i><i style="--h: 76%"></i><i style="--h: 100%"></i>
+                </div>
+                <span class="foot-label">LEARNING RATE</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="visual-float visual-float--bottom">
+            <span class="float-kicker">OPEN LAB</span>
+            <span class="float-value">周五 · 19:00</span>
+            <span class="float-meta">带上你的问题来</span>
+          </div>
+
+          <span class="visual-star" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><use href="#icon-spark"></use></svg>
+          </span>
+        </div>
+      </div>
+
+      <div class="container hero-bottom">
+        <a class="scroll-cue" href="#about">
+          <span class="scroll-icon"><svg viewBox="0 0 24 24"><use href="#icon-arrow-down"></use></svg></span>
+          <span>向下探索</span>
+        </a>
+        <span class="hero-coordinate">UNIVERSITY AI SOCIETY / EST. 2021</span>
+      </div>
+    </section>
+
+    <div class="discipline-strip" aria-label="社团研究方向">
+      <div class="discipline-track">
+        <div class="discipline-group">
+          <span>LARGE LANGUAGE MODELS</span><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-spark"></use></svg>
+          <span>COMPUTER VISION</span><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-spark"></use></svg>
+          <span>EMBODIED AI</span><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-spark"></use></svg>
+          <span>AI × DESIGN</span><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-spark"></use></svg>
+          <span>AI ETHICS</span><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-spark"></use></svg>
+          <span>CREATIVE MACHINE LEARNING</span><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-spark"></use></svg>
+        </div>
+        <div class="discipline-group" aria-hidden="true">
+          <span>LARGE LANGUAGE MODELS</span><svg viewBox="0 0 32 32"><use href="#icon-spark"></use></svg>
+          <span>COMPUTER VISION</span><svg viewBox="0 0 32 32"><use href="#icon-spark"></use></svg>
+          <span>EMBODIED AI</span><svg viewBox="0 0 32 32"><use href="#icon-spark"></use></svg>
+          <span>AI × DESIGN</span><svg viewBox="0 0 32 32"><use href="#icon-spark"></use></svg>
+          <span>AI ETHICS</span><svg viewBox="0 0 32 32"><use href="#icon-spark"></use></svg>
+          <span>CREATIVE MACHINE LEARNING</span><svg viewBox="0 0 32 32"><use href="#icon-spark"></use></svg>
+        </div>
+      </div>
+    </div>
+
+    <section class="section about" id="about">
+      <div class="container">
+        <div class="section-top">
+          <span class="section-label"><span class="section-index">01</span>关于社团 / ABOUT</span>
+          <span class="section-note">一群对智能保持好奇的人</span>
+        </div>
+
+        <div class="about-layout">
+          <div class="about-copy">
+            <h2 class="display-title">我们是一群，<br>把 AI 当<span class="accent-word">动词</span>的人。</h2>
+            <p class="about-lead">
+              与其讨论 AI 会如何改变世界，不如先动手做一个能跑起来的原型。NEXUS 成立于 2021 年，是一个由本科生与研究生共同运营的跨学科 AI 社群。
+            </p>
+            <div class="about-detail-cols">
+              <p>在这里，计算机、设计、数学、认知科学和人文背景的同学组成小队。我们把论文变成代码，把课堂知识变成能被真实用户使用的产品。</p>
+              <p>没有「等学会了再做」——我们边做边学。每周共读、每月 Demo Day、每学期一次完整的产品冲刺，就是我们最日常的节奏。</p>
+            </div>
+            <div class="about-signature">
+              <span class="signature-mark">N.</span>
+              <span>学生发起 · 学生运营 · 永远好奇</span>
+            </div>
+          </div>
+
+          <aside class="society-card" aria-label="社团概览">
+            <div class="society-card-head">
+              <span>THE SOCIETY / 2026</span>
+              <span class="society-badge">STUDENT-LED</span>
+            </div>
+            <div class="society-stats">
+              <div class="society-stat">
+                <strong>128</strong>
+                <span>成员 / MEMBERS</span>
+              </div>
+              <div class="society-stat">
+                <strong>14</strong>
+                <span>在研项目 / LIVE PROJECTS</span>
+              </div>
+              <div class="society-stat">
+                <strong>06</strong>
+                <span>研究方向 / TRACKS</span>
+              </div>
+              <div class="society-stat">
+                <strong>24<span class="stat-unit">h</span></strong>
+                <span>实验室开放 / ACCESS</span>
+              </div>
+            </div>
+            <div class="society-tracks">
+              <span class="micro-label">FOCUS TRACKS</span>
+              <div class="track-tags">
+                <span>LLM &amp; Agents</span>
+                <span>Computer Vision</span>
+                <span>Embodied AI</span>
+                <span>AI × Design</span>
+              </div>
+            </div>
+            <div class="society-foot">
+              <span class="society-signal"><i></i>OPEN FOR COLLABORATION</span>
+              <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-spark"></use></svg>
+            </div>
+          </aside>
+        </div>
+
+        <div class="principles">
+          <article class="principle">
+            <div class="principle-num">01</div>
+            <div class="principle-body">
+              <span class="micro-label">READ DEEPLY</span>
+              <h3>读得深</h3>
+              <p>每周论文共读，从公式推演到代码复现。我们不满足于「大概懂了」。</p>
+            </div>
+          </article>
+          <article class="principle">
+            <div class="principle-num">02</div>
+            <div class="principle-body">
+              <span class="micro-label">BUILD REAL</span>
+              <h3>做得真</h3>
+              <p>不止停在 Notebook。每一个想法，都要走到能被人打开、使用和评价的那一步。</p>
+            </div>
+          </article>
+          <article class="principle">
+            <div class="principle-num">03</div>
+            <div class="principle-body">
+              <span class="micro-label">SHARE OPEN</span>
+              <h3>分享开</h3>
+              <p>笔记、代码和踩过的坑默认开放，让下一位同学能站得更高一点。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects" id="projects">
+      <div class="container">
+        <div class="section-top">
+          <span class="section-label"><span class="section-index">02</span>项目进度 / PROJECTS</span>
+          <span class="section-note">每两周更新 · 只记录真实进度</span>
+        </div>
+
+        <div class="section-heading">
+          <h2 class="display-title">把想法，<br>推进到<span class="accent-word">下一步</span>。</h2>
+          <div class="heading-aside">
+            <p>从一行 Prompt 到一个能运行的产品，项目是我们学习 AI 最诚实的方式。这里是正在发生的事。</p>
+            <div class="project-legend">
+              <span><i class="legend-dot legend-dot--live"></i>04 进行中</span>
+              <span><i class="legend-dot legend-dot--done"></i>12 已结项</span>
+            </div>
+          </div>
+        </div>
+
+        <article class="project-feature">
+          <div class="feature-content">
+            <div class="project-topline">
+              <span>PROJECT / 001</span>
+              <span class="project-status project-status--live"><i></i>研发中</span>
+            </div>
+            <div class="feature-titleblock">
+              <p class="project-en">KITE / CAMPUS LEARNING AGENT</p>
+              <h3>KITE <span>校园智学助手</span></h3>
+              <p class="project-desc">一个懂你的课程、资料和节奏的校园学习 Agent。通过 RAG 与多智能体编排，连接课程知识库、个人笔记与校内资源。</p>
+            </div>
+            <div class="tag-row">
+              <span>LLM</span><span>RAG</span><span>MULTI-AGENT</span><span>EDU</span>
+            </div>
+            <div class="feature-progress">
+              <div class="progress-head">
+                <span>整体进度</span>
+                <strong>76<span>%</span></strong>
+              </div>
+              <div class="progress-track" role="progressbar" aria-label="KITE 项目进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="76">
+                <span style="width: 76%"></span>
+              </div>
+              <div class="progress-meta">
+                <span>当前阶段 · 模型调优</span>
+                <span>更新于 11.05</span>
+              </div>
+            </div>
+            <div class="feature-foot">
+              <div class="avatar-stack" aria-label="7 位项目成员">
+                <span class="avatar avatar--a">L</span>
+                <span class="avatar avatar--b">Z</span>
+                <span class="avatar avatar--c">Y</span>
+                <span class="avatar avatar--d">K</span>
+                <span class="avatar avatar--more">+3</span>
+              </div>
+              <span class="team-note">7 位成员 · 产品 / 算法 / 设计</span>
+              <a class="project-open" href="apply.html?team=KITE" aria-label="申请加入 KITE 项目组">OPEN TEAM <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+            </div>
+          </div>
+
+          <div class="project-preview" aria-hidden="true">
+            <div class="preview-window">
+              <div class="preview-bar">
+                <span class="window-dots"><i></i><i></i><i></i></span>
+                <span class="preview-address">kite.study / workspace</span>
+                <span class="preview-beta">BETA</span>
+              </div>
+              <div class="preview-body">
+                <div class="preview-user">
+                  <span class="preview-label">YOU · 21:04</span>
+                  <p>帮我用费曼法梳理一下这周的「注意力机制」，顺便出 3 道自测题。</p>
+                </div>
+                <div class="preview-ai">
+                  <span class="ai-avatar">
+                    <svg viewBox="0 0 32 32"><use href="#icon-spark"></use></svg>
+                  </span>
+                  <div class="ai-content">
+                    <span class="preview-label">KITE · 21:04</span>
+                    <p>好的。先把它想象成一场派对：每个词都在决定，应该把注意力放在谁身上。</p>
+                    <div class="preview-cards">
+                      <span>01 概念卡<strong>Q / K / V</strong></span>
+                      <span>02 类比卡<strong>PARTY</strong></span>
+                      <span>03 自测卡<strong>3 Qs</strong></span>
+                    </div>
+                    <div class="typing-row"><i></i><i></i><i></i><span>正在生成概念图…</span></div>
+                  </div>
+                </div>
+                <div class="preview-input">
+                  <span>继续追问，或拖入一份课件…</span>
+                  <kbd>↵</kbd>
+                </div>
+              </div>
+            </div>
+            <div class="preview-float">
+              <span class="preview-float-label">CONTEXT LOADED</span>
+              <strong>24 files</strong>
+              <span class="mini-progress"><i style="width: 82%"></i></span>
+            </div>
+          </div>
+        </article>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-topline">
+              <span>PROJECT / 002</span>
+              <span class="project-status project-status--mint"><i></i>原型验证</span>
+            </div>
+            <div class="card-titleblock">
+              <p class="project-en">ORB / EDGE VISION</p>
+              <h3>ORB <span>低功耗视觉导航</span></h3>
+              <p class="project-desc">为校园室内场景打造的低功耗视觉导航模组，让一副普通眼镜也拥有方向感。</p>
+            </div>
+            <div class="card-middle">
+              <div class="tag-row"><span>CV</span><span>EDGE AI</span><span>HARDWARE</span></div>
+              <div class="progress-compact">
+                <div class="progress-head"><span>进度</span><strong>43%</strong></div>
+                <div class="progress-track" role="progressbar" aria-label="ORB 项目进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="43"><span style="width: 43%"></span></div>
+              </div>
+            </div>
+            <div class="card-foot">
+              <span>硬件联调中</span>
+              <span>11.02</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-topline">
+              <span>PROJECT / 003</span>
+              <span class="project-status project-status--violet"><i></i>内测中</span>
+            </div>
+            <div class="card-titleblock">
+              <p class="project-en">LUCID / GENERATIVE FILM</p>
+              <h3>LUCID <span>AI 影像共创</span></h3>
+              <p class="project-desc">一部完全由社团成员与生成式模型共同完成的短片，正在寻找最后一块拼图。</p>
+            </div>
+            <div class="card-middle">
+              <div class="tag-row"><span>GEN-AI</span><span>FILM</span><span>DESIGN</span></div>
+              <div class="progress-compact">
+                <div class="progress-head"><span>进度</span><strong>88%</strong></div>
+                <div class="progress-track" role="progressbar" aria-label="LUCID 项目进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="88"><span style="width: 88%"></span></div>
+              </div>
+            </div>
+            <div class="card-foot">
+              <span>后期与展映筹备</span>
+              <span>10.30</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-topline">
+              <span>PROJECT / 004</span>
+              <span class="project-status project-status--orange"><i></i>探索中</span>
+            </div>
+            <div class="card-titleblock">
+              <p class="project-en">MOSS / AFFECTIVE ROBOT</p>
+              <h3>MOSS <span>情绪陪伴机器人</span></h3>
+              <p class="project-desc">用多模态感知去理解人的情绪，探索一种更温柔、也更有分寸的具身智能。</p>
+            </div>
+            <div class="card-middle">
+              <div class="tag-row"><span>ROBOTICS</span><span>MULTIMODAL</span><span>HRI</span></div>
+              <div class="progress-compact">
+                <div class="progress-head"><span>进度</span><strong>31%</strong></div>
+                <div class="progress-track" role="progressbar" aria-label="MOSS 项目进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="31"><span style="width: 31%"></span></div>
+              </div>
+            </div>
+            <div class="card-foot">
+              <span>概念验证</span>
+              <span>10.26</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="project-footer-note">
+          <span><i class="live-dot"></i>所有进度由项目组每两周同步一次</span>
+          <span>PROJECT BOARD / UPDATED 11.06.2026</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section activities" id="activities">
+      <div class="container">
+        <div class="section-top">
+          <span class="section-label"><span class="section-index">03</span>活动公告 / EVENTS</span>
+          <span class="section-note">来见面，比看一百篇推送更有用</span>
+        </div>
+
+        <div class="section-heading">
+          <h2 class="display-title">这个学期，<br>一起做点<span class="accent-word">新鲜的</span>。</h2>
+          <div class="heading-aside">
+            <p>工作坊、论文共读、黑客松与开放麦。我们相信最好的学习，发生在人和人真正碰面的时候。</p>
+            <span class="event-count"><i></i>本月还有 5 场活动</span>
+          </div>
+        </div>
+
+        <div class="activity-layout">
+          <article class="featured-event">
+            <div class="event-content">
+              <div class="event-topline">
+                <span class="event-type">FEATURED / 工作坊</span>
+                <span class="event-no">SESSION 006</span>
+              </div>
+              <h3>从 RAG 到 Agent：<br>让应用真正「会思考」</h3>
+              <p class="event-desc">不讲空泛的概念。两个小时内，从零搭起一个能检索校园资料、规划任务并调用工具的 Agent，把你的第一个想法带上线。</p>
+              <div class="event-facts">
+                <div class="event-fact">
+                  <span>TIME</span>
+                  <strong>11.21 周六</strong>
+                  <small>19:00 — 21:00</small>
+                </div>
+                <div class="event-fact">
+                  <span>PLACE</span>
+                  <strong>图书馆 B1</strong>
+                  <small>创客空间 · Maker Space</small>
+                </div>
+                <div class="event-fact">
+                  <span>HOST</span>
+                  <strong>林教授</strong>
+                  <small>计算机学院 · NLP Lab</small>
+                </div>
+                <div class="event-fact">
+                  <span>SEATS</span>
+                  <strong>48 / 60</strong>
+                  <small>已报名 · 限额 60 人</small>
+                </div>
+              </div>
+              <div class="event-action-row">
+                <a class="event-button" href="events.html#featured">
+                  查看详情与报名
+                  <span><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></span>
+                </a>
+                <span class="event-note">提供晚餐 · 带上电脑</span>
+              </div>
+            </div>
+
+            <div class="event-poster" aria-hidden="true">
+              <div class="poster-head">
+                <span>NEXUS / WORKSHOP</span>
+                <span>19:00</span>
+              </div>
+              <div class="poster-orbit">
+                <div class="poster-ring poster-ring--one"></div>
+                <div class="poster-ring poster-ring--two"></div>
+                <div class="poster-ring poster-ring--three"></div>
+                <div class="poster-core">
+                  <svg viewBox="0 0 32 32"><use href="#icon-spark"></use></svg>
+                </div>
+                <span class="poster-cross poster-cross--one">+</span>
+                <span class="poster-cross poster-cross--two">+</span>
+              </div>
+              <div class="poster-date">
+                <span>NOV</span>
+                <strong>21</strong>
+              </div>
+              <p class="poster-caption">BUILD<br>SMARTER.</p>
+              <div class="poster-foot">
+                <span>LIBRARY B1 · 19:00</span>
+                <span>12 SEATS LEFT</span>
+              </div>
+            </div>
+          </article>
+
+          <aside class="event-side" aria-label="近期活动">
+            <div class="side-heading">
+              <h3>接下来见</h3>
+              <span>UP NEXT</span>
+            </div>
+
+            <a class="mini-event" href="events.html#calendar">
+              <div class="mini-date"><strong>14</strong><span>NOV / 周六</span></div>
+              <div class="mini-info">
+                <span class="mini-type mini-type--mint">PAPER CLUB</span>
+                <h4>重读 Attention：从公式到代码</h4>
+                <p>计科楼 302 · 14:00 — 16:00</p>
+              </div>
+              <span class="mini-arrow">↗</span>
+            </a>
+
+            <a class="mini-event" href="events.html#calendar">
+              <div class="mini-date"><strong>18</strong><span>NOV / 周三</span></div>
+              <div class="mini-info">
+                <span class="mini-type mini-type--violet">TALK</span>
+                <h4>AI × Design：当设计师开始写 Prompt</h4>
+                <p>线上 · 腾讯会议 · 19:30</p>
+              </div>
+              <span class="mini-arrow">↗</span>
+            </a>
+
+            <a class="mini-event" href="events.html#calendar">
+              <div class="mini-date"><strong>28</strong><span>NOV / 周六</span></div>
+              <div class="mini-info">
+                <span class="mini-type mini-type--orange">HACKATHON</span>
+                <h4>48h AI for Campus 校园黑客松</h4>
+                <p>学生创新中心 · 全天</p>
+              </div>
+              <span class="mini-arrow">↗</span>
+            </a>
+
+            <a class="calendar-button" href="events.html#calendar">
+              浏览完整活动日历
+              <span class="calendar-line"></span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+            </a>
+          </aside>
+        </div>
+
+        <div class="notice-board">
+          <div class="notice-head">
+            <span class="micro-label">NOTICE BOARD / 公告</span>
+            <h3>需要知道的事</h3>
+          </div>
+          <div class="notice-list">
+            <a class="notice-row" href="events.html#calendar">
+              <span class="notice-date">11.08</span>
+              <span class="notice-tag">LAB</span>
+              <p>NEXUS Lab 十一月开放日预约开启，工位与 GPU 时段可申请。</p>
+              <span class="notice-arrow">↗</span>
+            </a>
+            <a class="notice-row" href="events.html#calendar">
+              <span class="notice-date">11.12</span>
+              <span class="notice-tag">MATERIAL</span>
+              <p>Paper Club #12 阅读材料与预习问题已上传至学习资料库。</p>
+              <span class="notice-arrow">↗</span>
+            </a>
+            <a class="notice-row" href="events.html#honor">
+              <span class="notice-date">11.13</span>
+              <span class="notice-tag">NOTICE</span>
+              <p>学院公开课：11.13 宝山校区 J202，AI PC 技术与创新赛宣讲，参加方式见学院通知。</p>
+              <span class="notice-arrow">↗</span>
+            </a>
+            <a class="notice-row" href="events.html#calendar">
+              <span class="notice-date">11.18</span>
+              <span class="notice-tag">RECRUIT</span>
+              <p>「具身智能」项目组开放 2 个设计方向名额，欢迎跨专业同学加入。</p>
+              <span class="notice-arrow">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="news-board">
+          <div class="news-head">
+            <div>
+              <span class="micro-label">COMMUNITY NEWS / 社团动态</span>
+              <h3>上海大学人工智能社团近期活动</h3>
+            </div>
+            <span class="news-source-note">来源：通信与信息工程学院公开报道</span>
+          </div>
+          <div class="news-list">
+            <a class="news-item" href="https://mp.weixin.qq.com/s/IxySFEBMgejzcBQJ8rgkYQ" target="_blank" rel="noopener noreferrer">
+              <div class="news-date"><strong>2026.10.23</strong>团日</div>
+              <div class="news-copy">
+                <h4>「焊动金秋 · 烙铁生花」主题团日活动</h4>
+                <p>人工智能社团与通信学院 2026 级理工Ⅲ类 4 班在翔英大楼 T406 联合举办。社长任捷讲解电烙铁握持、送锡方法与焊点成形要点，学术部部长曹健宇展示机器小车项目；同学们从练习板单点焊接，练到导线焊接与连接。</p>
+                <div class="news-tags">
+                  <span class="news-tag">动手实践</span>
+                  <span class="news-origin">公众号原文 · 通信学院融媒体部 · 撰稿 黄忻</span>
+                </div>
+              </div>
+              <span class="news-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a class="news-item" href="https://scie.shu.edu.cn/info/1066/46645.htm" target="_blank" rel="noopener noreferrer">
+              <div class="news-date"><strong>2026.06.05</strong>分享会</div>
+              <div class="news-copy">
+                <h4>第一届人工智能社团青年分享会：什么是 AI Agent</h4>
+                <p>在翔英大楼 608 创客空间线上线下同步举行，二十余名同学参加。副社长张霖昊主讲 AI Agent 的概念边界、产业落地与科研方向。</p>
+                <div class="news-tags">
+                  <span class="news-tag">分享会</span>
+                  <span class="news-origin">学院新闻 · 2026.06.08</span>
+                </div>
+              </div>
+              <span class="news-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a class="news-item" href="https://scie.shu.edu.cn/info/1065/46345.htm" target="_blank" rel="noopener noreferrer">
+              <div class="news-date"><strong>2026.04.10</strong>竞赛</div>
+              <div class="news-copy">
+                <h4>上海大学 2025 年人工智能创新大赛决赛</h4>
+                <p>15 支队伍在翔英大楼 T608 同台竞技，项目覆盖自然语言处理、金融科技、智能驾驶、智能医疗等方向；通信学院承办、人工智能社团协办。</p>
+                <div class="news-tags">
+                  <span class="news-tag">竞赛</span>
+                  <span class="news-origin">学院新闻 · 2026.04.13</span>
+                </div>
+              </div>
+              <span class="news-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a class="news-item" href="https://mp.weixin.qq.com/s/w9l2QzYGAc9RFlvV_PuGpw" target="_blank" rel="noopener noreferrer">
+              <div class="news-date"><strong>2025.12.05</strong>实战课</div>
+              <div class="news-copy">
+                <h4>「昇腾赋能 · 深度学习实战进阶」实战课</h4>
+                <p>翔英大楼 608，往届社长、2022 级通信工程黄旺文主讲：从昇腾 AI 全栈与昇思框架讲起，带同学完成环境配置、深度估计模型搭建与昇腾推理，实现单图到视频流的深度预测。</p>
+                <div class="news-tags">
+                  <span class="news-tag">实战课</span>
+                  <span class="news-origin">公众号原文 · 通信学院融媒体部 · 2025.12.09</span>
+                </div>
+              </div>
+              <span class="news-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a class="news-item" href="https://mp.weixin.qq.com/s/w5xcUtydAPP6TCk1WVrcMQ" target="_blank" rel="noopener noreferrer">
+              <div class="news-date"><strong>2025.11.29</strong>众测</div>
+              <div class="news-copy">
+                <h4>华为鲲鹏 BoostKit 高校开发者众测 · 上海站</h4>
+                <p>赴华为上海练秋湖研发中心，与全市多所高校开发者一起完成 Hyperscan 正则匹配、鲲鹏数据库异步优化与 KBest 图检索算法实践；参与者获体验证书，部分同学获「金点子奖」。</p>
+                <div class="news-tags">
+                  <span class="news-tag">众测</span>
+                  <span class="news-origin">公众号原文 · 通信学院融媒体部 · 2025.12.03</span>
+                </div>
+              </div>
+              <span class="news-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a class="news-item" href="https://scie.shu.edu.cn/info/1066/45485.htm" target="_blank" rel="noopener noreferrer">
+              <div class="news-date"><strong>2025.11.22</strong>实践</div>
+              <div class="news-copy">
+                <h4>走进华为鸿蒙生态学堂上海站</h4>
+                <p>近百名社团成员参加鸿蒙生态宣讲、开发者分享与实训体验，并围绕「AI + 鸿蒙」与华为技术专家面对面交流。</p>
+                <div class="news-tags">
+                  <span class="news-tag">实践</span>
+                  <span class="news-origin">学院新闻 · 2025.11.25</span>
+                </div>
+              </div>
+              <span class="news-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <p class="news-foot">以上信息整理自通信与信息工程学院官网公开报道与学院融媒体部推文：官网报道可点击查看原文，公众号文章需在微信客户端内打开。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section resources" id="resources">
+      <div class="container">
+        <div class="section-top">
+          <span class="section-label"><span class="section-index">04</span>学习资料 / LIBRARY</span>
+          <span class="section-note">32 份资料 · 每周三更新</span>
+        </div>
+
+        <div class="section-heading">
+          <h2 class="display-title">让下一次提问，<br>从更好的<span class="accent-word">资料</span>开始。</h2>
+          <div class="heading-aside">
+            <p>由社团成员整理、验证并持续维护的学习资源。从第一行 Python 到读懂一篇顶会论文，按自己的节奏出发。</p>
+            <span class="resource-note"><i></i>全部资源开放给校内同学</span>
+          </div>
+        </div>
+
+        <div class="resource-layout">
+          <aside class="resource-sidebar" aria-label="资料分类">
+            <div class="resource-index-head">
+              <span class="micro-label">LIBRARY INDEX</span>
+              <span>2026—27</span>
+            </div>
+            <div class="resource-categories">
+              <div class="resource-category is-active">
+                <span>全部资料</span><span>32</span>
+              </div>
+              <div class="resource-category">
+                <span>入门课程</span><span>08</span>
+              </div>
+              <div class="resource-category">
+                <span>论文精读</span><span>11</span>
+              </div>
+              <div class="resource-category">
+                <span>工程实战</span><span>09</span>
+              </div>
+              <div class="resource-category">
+                <span>工具与模板</span><span>04</span>
+              </div>
+            </div>
+
+            <div class="learning-path">
+              <span class="micro-label">NEW MEMBER PATH</span>
+              <h4>第一次进入 AI 世界</h4>
+              <ol>
+                <li><span>01</span><p>Python 与数学基础</p><em>4—6 周</em></li>
+                <li><span>02</span><p>机器学习核心概念</p><em>6 周</em></li>
+                <li><span>03</span><p>深度学习与 Transformer</p><em>8 周</em></li>
+                <li><span>04</span><p>选择方向，开始做项目</p><em>持续</em></li>
+              </ol>
+              <a class="path-button" href="path.html">查看完整学习路线 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+            </div>
+          </aside>
+
+          <div class="resource-main">
+            <article class="resource-feature">
+              <div class="resource-feature-copy">
+                <div class="resource-feature-top">
+                  <span class="resource-kind">GUIDE / 实战教程</span>
+                  <span class="resource-read">48 MIN</span>
+                </div>
+                <h3>用 2 小时，<br>搭建你的第一个<br>RAG 应用。</h3>
+                <p>从文档切分、向量检索到回答生成。跟着可运行的 Notebook，把一个「好像懂」的概念变成真正跑得起来的应用。</p>
+                <div class="resource-feature-foot">
+                  <span class="resource-tags"><span>LLM</span><span>RAG</span><span>BEGINNER</span></span>
+                  <span class="resource-updated">更新于 10.28</span>
+                </div>
+              </div>
+              <div class="resource-code" aria-hidden="true">
+                <div class="code-head">
+                  <span class="window-dots"><i></i><i></i><i></i></span>
+                  <span>rag_pipeline.py</span>
+                  <span class="code-live">● RUNNING</span>
+                </div>
+                <pre><code><span class="code-muted">01</span>  <span class="code-violet">from</span> nexus <span class="code-violet">import</span> RAG
+<span class="code-muted">02</span>
+<span class="code-muted">03</span>  pipeline = RAG(
+<span class="code-muted">04</span>      retriever=<span class="code-acid">"hybrid"</span>,
+<span class="code-muted">05</span>      top_k=<span class="code-mint">5</span>,
+<span class="code-muted">06</span>      generator=<span class="code-acid">"campus-lm"</span>
+<span class="code-muted">07</span>  )
+<span class="code-muted">08</span>
+<span class="code-muted">09</span>  answer = pipeline.ask(
+<span class="code-muted">10</span>      <span class="code-acid">"图书馆几点闭馆？"</span>
+<span class="code-muted">11</span>  )
+<span class="code-muted">12</span></code></pre>
+                <div class="code-footer">
+                  <span><i></i>ALL CELLS PASSED</span>
+                  <span>2.4s</span>
+                </div>
+                <span class="code-sticker">RUN<br>IT.</span>
+              </div>
+            </article>
+
+            <div class="resource-list">
+              <article class="resource-row">
+                <span class="resource-icon resource-icon--pdf">PDF</span>
+                <div class="resource-copy">
+                  <span class="resource-cat">论文精读 / PAPER</span>
+                  <h4>Attention 之后：Transformer 架构演进地图</h4>
+                  <p>从原始论文到 MoE 与长上下文，18 篇关键论文的阅读顺序。</p>
+                </div>
+                <span class="resource-size">24 页</span>
+                <span class="resource-arrow">↗</span>
+              </article>
+
+              <article class="resource-row">
+                <span class="resource-icon resource-icon--note">NOTE</span>
+                <div class="resource-copy">
+                  <span class="resource-cat">课程笔记 / COURSE</span>
+                  <h4>CS231n 视觉识别 · 中文精读笔记</h4>
+                  <p>完整 12 章知识点、公式推导与课程作业拆解。</p>
+                </div>
+                <span class="resource-size">12 章</span>
+                <span class="resource-arrow">↗</span>
+              </article>
+
+              <article class="resource-row">
+                <span class="resource-icon resource-icon--lab">LAB</span>
+                <div class="resource-copy">
+                  <span class="resource-cat">工程实战 / ENGINEERING</span>
+                  <h4>Agent 开发工具箱：LangGraph / MCP / RAG</h4>
+                  <p>一份经过项目验证的工具清单，以及我们踩过的坑。</p>
+                </div>
+                <span class="resource-size">18 个资源</span>
+                <span class="resource-arrow">↗</span>
+              </article>
+
+              <article class="resource-row">
+                <span class="resource-icon resource-icon--video">REC</span>
+                <div class="resource-copy">
+                  <span class="resource-cat">分享回放 / TALK</span>
+                  <h4>NEXUS Talk：如何真正读懂一篇 AI 论文</h4>
+                  <p>从摘要到实验部分，一套可复用的论文阅读工作流。</p>
+                </div>
+                <span class="resource-size">58 分钟</span>
+                <span class="resource-arrow">↗</span>
+              </article>
+            </div>
+
+            <div class="resource-bottom">
+              <span>找不到需要的资料？</span>
+              <a href="suggest.html">向知识库提交资源建议 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="join" id="join">
+      <div class="container">
+        <div class="join-panel">
+          <div class="join-glow" aria-hidden="true"></div>
+          <div class="join-topline">
+            <span>RECRUITMENT / 2026 FALL</span>
+            <span class="join-open"><i></i>OPEN NOW</span>
+          </div>
+
+          <div class="join-main">
+            <div class="join-heading-block">
+              <p class="join-eyebrow">WE'RE LOOKING FOR CURIOUS MINDS.</p>
+              <h2>下一段智能，<br><span class="outline-text">由你定义</span><span class="join-period">。</span></h2>
+              <p class="join-desc">不限专业，不需要现成的 AI 背景。带着一个你真正好奇的问题来，剩下的我们一起学。</p>
+            </div>
+
+            <div class="join-action-block">
+              <a class="join-disc" href="apply.html" aria-label="填写入社申请">
+                <span class="disc-cn">申请加入</span>
+                <span class="disc-label">APPLY<br>NOW</span>
+                <span class="disc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></span>
+                <span class="disc-ring" aria-hidden="true"></span>
+              </a>
+              <div class="join-deadline">
+                <span>申请截止</span>
+                <strong>11.30 / 24:00</strong>
+                <span>面试时间 12.06 — 12.08</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="join-bottom">
+            <div class="join-tags">
+              <span>不限年级与专业</span>
+              <span>零基础友好</span>
+              <span>算力与设备支持</span>
+              <span>跨学科项目机会</span>
+            </div>
+            <div class="join-cta-note">
+              <span>带着好奇心，来就好</span>
+              <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-spark"></use></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a class="brand brand--footer" href="#top" aria-label="NEXUS AI 首页">
+            <span class="brand-mark">
+              <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-spark"></use></svg>
+            </span>
+            <span class="brand-copy">
+              <span class="brand-name">NEXUS<span>/AI</span></span>
+              <span class="brand-sub">大学人工智能协会</span>
+            </span>
+          </a>
+          <p>在校园里，训练未来。<br>一个由好奇心驱动的学生 AI 社群。</p>
+          <span class="footer-est">EST. 2021 / STUDENT-LED</span>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">探索</span>
+          <a href="#about">关于社团</a>
+          <a href="#projects">项目进度</a>
+          <a href="#activities">活动公告</a>
+          <a href="#resources">学习资料</a>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">找到我们</span>
+          <span>学生创新中心 3F · 08</span>
+          <span>每周五 19:00 开放</span>
+          <span class="footer-email">hello@nexusai.club</span>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">保持联系</span>
+          <span class="social-row">GitHub <i>↗</i></span>
+          <span class="social-row">小红书 <i>↗</i></span>
+          <span class="social-row">微信公众号 <i>↗</i></span>
+        </div>
+      </div>
+
+      <div class="footer-rule"></div>
+
+      <div class="footer-bottom">
+        <span>© 2026 NEXUS AI SOCIETY</span>
+        <span class="footer-motto">BUILT WITH CURIOSITY, ON CAMPUS.</span>
+        <a class="back-top" href="#top">回到顶部 <span>↑</span></a>
+      </div>
+    </div>
+  </footer>
+  <script src="particle-net.js" defer></script>
+  <script src="theme.js" defer></script>
+  <script src="nav.js" defer></script>
+  <script src="particles.js" defer></script>
+  <script src="intro.js" defer></script>
+</body>
+</html>

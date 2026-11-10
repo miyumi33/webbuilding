@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="向 NEXUS AI 学习资料库提交资源建议：课程、论文、工具与模板，采纳后会署名。">
+  <meta name="theme-color" content="#07090e">
+  <title>提交资源建议 · NEXUS AI</title>
+  <script>
+    (() => {
+      const key = 'nexus-theme';
+      let theme;
+      try { theme = localStorage.getItem(key); } catch (error) {}
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.style.colorScheme = theme;
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', theme === 'light' ? '#f3ede2' : '#07090e');
+    })();
+  </script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080a08'/%3E%3Cpath d='M32 8c1.4 13.7 9.2 21.5 22.9 22.9C41.2 32.3 33.4 40 32 53.8 30.6 40 22.8 32.3 9.1 30.9 22.8 29.5 30.6 21.7 32 8Z' fill='%237fa9ff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="page.css">
+</head>
+<body class="subpage">
+  <div id="particle-stage" class="particle-stage" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <svg class="svg-defs" aria-hidden="true" focusable="false">
+    <symbol id="icon-spark" viewBox="0 0 32 32">
+      <path d="M16 1.5c.8 8.6 5.9 13.7 14.5 14.5-8.6.8-13.7 5.9-14.5 14.5C15.2 21.9 10.1 16.8 1.5 16 10.1 15.2 15.2 10.1 16 1.5Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24">
+      <path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.28 5.28l1.42 1.42M17.3 17.3l1.42 1.42M5.28 18.72l1.42-1.42M17.3 6.7l1.42-1.42" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24">
+      <path d="M20.5 14.2A8.7 8.7 0 0 1 9.8 3.5a8.7 8.7 0 1 0 10.7 10.7Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <header class="page-header">
+    <div class="page-header-inner">
+      <a class="brand" href="index.html" aria-label="NEXUS AI 首页">
+        <span class="brand-mark">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-spark"></use></svg>
+        </span>
+        <span class="brand-copy">
+          <span class="brand-name">NEXUS<span>/AI</span></span>
+          <span class="brand-sub">大学人工智能协会</span>
+        </span>
+      </a>
+      <div class="page-header-actions">
+        <a class="back-link" href="index.html"><span aria-hidden="true">←</span> 返回首页</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换浅色或深色模式" title="切换浅色或深色模式">
+          <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-sun"></use></svg>
+          <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-moon"></use></svg>
+          <span class="theme-toggle-label" aria-hidden="true">
+            <span class="theme-toggle-label--to-light">浅色</span>
+            <span class="theme-toggle-label--to-dark">深色</span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main" id="main">
+    <section class="page-hero">
+      <div class="page-wrap">
+        <span class="page-kicker">Library / Suggest</span>
+        <h1 class="page-title">提交资源建议</h1>
+        <p class="page-lede">
+          资料库里的 32 份资源，大部分来自成员自己的收藏。读到一篇好论文、发现一个好工具，
+          都可以填在这里；每周三整理时会被逐条看一遍。
+        </p>
+        <div class="page-meta">
+          <span>每周三更新</span>
+          <span>采纳后署名</span>
+          <span>仅收录可公开访问的资源</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="page-wrap">
+        <div class="detail-grid">
+          <div class="card">
+            <div class="section-head">
+              <h2 class="section-title">资源信息</h2>
+              <span class="section-note">1 分钟即可填完</span>
+            </div>
+
+            <form class="form" data-form data-success="suggest-success" data-subject="NEXUS AI 资源建议">
+              <div class="form-row">
+                <div class="field">
+                  <label for="suggest-name">资源名称 <span class="req">*</span></label>
+                  <input id="suggest-name" name="title" type="text" placeholder="例如：The Illustrated Transformer" required>
+                </div>
+                <div class="field">
+                  <label for="suggest-type">类型</label>
+                  <select id="suggest-type" name="type">
+                    <option>课程 / 教程</option>
+                    <option>论文</option>
+                    <option>工具 / 框架</option>
+                    <option>模板 / 代码</option>
+                    <option>数据集</option>
+                    <option>其他</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="suggest-url">资源链接</label>
+                <input id="suggest-url" name="url" type="url" inputmode="url" placeholder="https://…">
+              </div>
+
+              <div class="field">
+                <label for="suggest-reason">推荐理由 <span class="req">*</span></label>
+                <textarea id="suggest-reason" name="reason" minlength="10" placeholder="它解决什么问题？适合什么阶段的人看？你实际用下来最大的收获是什么？" required></textarea>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="suggest-author">推荐人（选填，用于署名）</label>
+                  <input id="suggest-author" name="author" type="text" placeholder="姓名或昵称">
+                </div>
+                <div class="field">
+                  <label for="suggest-email">邮箱（选填）</label>
+                  <input id="suggest-email" name="email" type="email" autocomplete="email" placeholder="方便我们回信确认">
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button class="button button-primary" type="submit">
+                  <span>提交建议</span>
+                  <span class="button-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+                  </span>
+                </button>
+                <span class="form-hint">提交后会在本页生成摘要，不会自动上传服务器。</span>
+              </div>
+            </form>
+
+            <div class="success" id="suggest-success" role="status" aria-live="polite">
+              <h3>建议摘要已生成</h3>
+              <p>纯前端页面不会直接写库。请用下面的按钮把摘要发到 hello@nexusai.club，我们会在每周三整理时查看。</p>
+              <div class="success-summary summary-body"></div>
+              <div class="success-actions">
+                <a class="button button-primary" data-success-mail href="mailto:hello@nexusai.club">
+                  <span>用邮件发送</span>
+                  <span class="button-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+                  </span>
+                </a>
+                <a class="button button-ghost" href="index.html#resources">
+                  <span>回资料库看看</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <aside class="card" aria-label="收录标准">
+            <div class="section-head">
+              <h2 class="section-title">收录标准</h2>
+            </div>
+            <ul class="note-list">
+              <li>可公开访问：不需要付费订阅或校内 VPN 才能打开。</li>
+              <li>有验证：你自己读过、跑过，能说清它好在哪里。</li>
+              <li>不重复：资料库里已有的内容，会在原条目上补充说明。</li>
+              <li>中文优先：中文精读、笔记和实战教程会优先收录。</li>
+            </ul>
+            <p class="form-hint spaced-top">被采纳后，你的名字会出现在资源卡片的「推荐人」位置。</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="page-wrap">
+        <div class="section-head">
+          <h2 class="section-title">资料库现在有什么</h2>
+          <span class="section-note">32 items · 4 categories</span>
+        </div>
+        <div class="detail-grid">
+          <div class="card">
+            <ul class="note-list">
+              <li>入门课程 08 份：Python、数学基础与机器学习核心概念。</li>
+              <li>论文精读 11 份：从 Attention 到 MoE 与长上下文的阅读顺序。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <ul class="note-list">
+              <li>工程实战 09 份：RAG、Agent 工具箱与训练调优笔记。</li>
+              <li>工具与模板 04 份：项目脚手架、实验记录模板。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cta-row">
+          <a class="button button-ghost" href="index.html#resources">
+            <span>回首页浏览资料库</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <div class="page-footer-inner">
+      <span>© 2026 NEXUS AI SOCIETY</span>
+      <a href="index.html">返回首页 ↑</a>
+    </div>
+  </footer>
+
+  <script src="particle-net.js" defer></script>
+  <script src="theme.js" defer></script>
+  <script src="particles.js" defer></script>
+  <script src="form.js" defer></script>
+</body>
+</html>

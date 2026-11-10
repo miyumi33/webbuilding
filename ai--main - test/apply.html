@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="申请加入 NEXUS AI 大学人工智能协会：不限专业与年级，零基础友好，2026 秋季纳新进行中。">
+  <meta name="theme-color" content="#07090e">
+  <title>申请加入 · NEXUS AI</title>
+  <script>
+    (() => {
+      const key = 'nexus-theme';
+      let theme;
+      try { theme = localStorage.getItem(key); } catch (error) {}
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.style.colorScheme = theme;
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', theme === 'light' ? '#f3ede2' : '#07090e');
+    })();
+  </script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080a08'/%3E%3Cpath d='M32 8c1.4 13.7 9.2 21.5 22.9 22.9C41.2 32.3 33.4 40 32 53.8 30.6 40 22.8 32.3 9.1 30.9 22.8 29.5 30.6 21.7 32 8Z' fill='%237fa9ff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="page.css">
+</head>
+<body class="subpage">
+  <div id="particle-stage" class="particle-stage" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <svg class="svg-defs" aria-hidden="true" focusable="false">
+    <symbol id="icon-spark" viewBox="0 0 32 32">
+      <path d="M16 1.5c.8 8.6 5.9 13.7 14.5 14.5-8.6.8-13.7 5.9-14.5 14.5C15.2 21.9 10.1 16.8 1.5 16 10.1 15.2 15.2 10.1 16 1.5Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24">
+      <path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-arrow-down" viewBox="0 0 24 24">
+      <path d="M12 4v16m0 0 6-6m-6 6-6-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.28 5.28l1.42 1.42M17.3 17.3l1.42 1.42M5.28 18.72l1.42-1.42M17.3 6.7l1.42-1.42" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24">
+      <path d="M20.5 14.2A8.7 8.7 0 0 1 9.8 3.5a8.7 8.7 0 1 0 10.7 10.7Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <header class="page-header">
+    <div class="page-header-inner">
+      <a class="brand" href="index.html" aria-label="NEXUS AI 首页">
+        <span class="brand-mark">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-spark"></use></svg>
+        </span>
+        <span class="brand-copy">
+          <span class="brand-name">NEXUS<span>/AI</span></span>
+          <span class="brand-sub">大学人工智能协会</span>
+        </span>
+      </a>
+      <div class="page-header-actions">
+        <a class="back-link" href="index.html"><span aria-hidden="true">←</span> 返回首页</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换浅色或深色模式" title="切换浅色或深色模式">
+          <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-sun"></use></svg>
+          <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-moon"></use></svg>
+          <span class="theme-toggle-label" aria-hidden="true">
+            <span class="theme-toggle-label--to-light">浅色</span>
+            <span class="theme-toggle-label--to-dark">深色</span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main" id="main">
+    <section class="page-hero">
+      <div class="page-wrap">
+        <span class="page-kicker">Recruitment / 2026 Fall</span>
+        <h1 class="page-title">加入 NEXUS</h1>
+        <p class="page-lede">
+          不限专业，不需要现成的 AI 背景。带着一个你真正好奇的问题来，剩下的我们一起学。
+          通过申请后，你会先进入一个三人小队，跟着一位老成员从读论文开始，直到把自己的想法做成能跑起来的 Demo。
+        </p>
+        <div class="page-meta">
+          <span>申请截止 11.30 / 24:00</span>
+          <span>线上面谈 12.06 — 12.08</span>
+          <span>结果通知 12.10</span>
+          <span>秋季名额 40 人</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="page-wrap">
+        <div class="detail-grid">
+          <div class="card">
+            <div class="section-head">
+              <h2 class="section-title">入社申请</h2>
+              <span class="section-note">大约需要 5 分钟</span>
+            </div>
+
+            <p class="form-hint" data-context hidden></p>
+
+            <form class="form" data-form data-success="form-success" data-subject="NEXUS AI 入社申请">
+              <div class="form-row">
+                <div class="field">
+                  <label for="apply-name">姓名 <span class="req">*</span></label>
+                  <input id="apply-name" name="name" type="text" autocomplete="name" placeholder="怎么称呼你" required>
+                </div>
+                <div class="field">
+                  <label for="apply-grade">年级</label>
+                  <select id="apply-grade" name="grade">
+                    <option value="">请选择</option>
+                    <option>大一</option>
+                    <option>大二</option>
+                    <option>大三</option>
+                    <option>大四</option>
+                    <option>研究生</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="apply-major">院系 / 专业 <span class="req">*</span></label>
+                  <input id="apply-major" name="major" type="text" placeholder="例如：计算机学院 软件工程" required>
+                </div>
+                <div class="field">
+                  <label for="apply-sid">学号（选填）</label>
+                  <input id="apply-sid" name="student-id" type="text" inputmode="numeric" placeholder="仅用于校内身份核对">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="apply-email">邮箱 <span class="req">*</span></label>
+                  <input id="apply-email" name="email" type="email" autocomplete="email" placeholder="you@campus.edu.cn" required>
+                </div>
+                <div class="field">
+                  <label for="apply-contact">微信 / 手机（选填）</label>
+                  <input id="apply-contact" name="contact" type="text" placeholder="方便活动提醒">
+                </div>
+              </div>
+
+              <div class="field">
+                <span class="field-label" id="apply-direction-label">感兴趣的方向（可多选）</span>
+                <div class="chips" role="group" aria-labelledby="apply-direction-label">
+                  <label class="chip"><input type="checkbox" name="direction" value="llm"><span>LLM &amp; Agents</span></label>
+                  <label class="chip"><input type="checkbox" name="direction" value="cv"><span>Computer Vision</span></label>
+                  <label class="chip"><input type="checkbox" name="direction" value="embodied"><span>Embodied AI</span></label>
+                  <label class="chip"><input type="checkbox" name="direction" value="design"><span>AI × Design</span></label>
+                  <label class="chip"><input type="checkbox" name="direction" value="ethics"><span>AI Ethics</span></label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="apply-motivation">你最近好奇的一个 AI 问题 <span class="req">*</span></label>
+                <textarea id="apply-motivation" name="motivation" minlength="10" placeholder="不用写得正式：可能是一个你想做的小工具、一篇读不懂的论文，或者一次让你惊讶的对话。" required></textarea>
+              </div>
+
+              <div class="field">
+                <label for="apply-source">你是从哪里知道 NEXUS 的？</label>
+                <select id="apply-source" name="source">
+                  <option value="">请选择</option>
+                  <option>社团宣讲 / 摊位</option>
+                  <option>朋友推荐</option>
+                  <option>公众号 / 小红书</option>
+                  <option>校园海报</option>
+                  <option>其他</option>
+                </select>
+              </div>
+
+              <div class="form-actions">
+                <button class="button button-primary" type="submit">
+                  <span>提交申请</span>
+                  <span class="button-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+                  </span>
+                </button>
+                <span class="form-hint">提交后会在本页生成摘要，不会自动上传服务器。</span>
+              </div>
+            </form>
+
+            <div class="success" id="form-success" role="status" aria-live="polite">
+              <h3>申请摘要已生成</h3>
+              <p>这是纯前端页面，不会直接写入数据库。请用下面的按钮把摘要发到 hello@nexusai.club，或者保存后到社团摊位提交。</p>
+              <div class="success-summary summary-body"></div>
+              <div class="success-actions">
+                <a class="button button-primary" data-success-mail href="mailto:hello@nexusai.club">
+                  <span>用邮件发送</span>
+                  <span class="button-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+                  </span>
+                </a>
+                <a class="button button-ghost" href="index.html">
+                  <span>先回首页看看</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <aside class="card" aria-label="申请流程与说明">
+            <div class="section-head">
+              <h2 class="section-title">接下来会发生什么</h2>
+            </div>
+            <ol class="steps">
+              <li>
+                <div>
+                  <h4>在线填写</h4>
+                  <p>5 分钟，看看你最近在好奇什么，不需要作品集。</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h4>15 分钟线上面谈</h4>
+                  <p>不是面试题，而是聊聊你写下的那个问题，以及你想动手的方向。</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h4>双向选择方向</h4>
+                  <p>六个方向、十四个在研项目，先看看你更想跟哪一个。</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h4>第一次 Paper Club</h4>
+                  <p>入社后第一周就会收到共读材料，和老成员一起把论文拆开。</p>
+                </div>
+              </li>
+            </ol>
+            <p class="form-hint spaced-top">零基础也完全没问题：往届有一半成员在加入前没写过一行 Python。</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="page-wrap">
+        <div class="section-head">
+          <h2 class="section-title">加入后你能得到什么</h2>
+          <span class="section-note">Member Benefits</span>
+        </div>
+        <div class="detail-grid">
+          <div class="card">
+            <ul class="note-list">
+              <li>每周一次论文共读，从公式推演到代码复现，有人陪你一起读。</li>
+              <li>算力与设备支持：社团 GPU 机时、开发板与传感器借用。</li>
+              <li>跨学科项目机会：和设计、数学、认知科学的同学组队做真实产品。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <ul class="note-list">
+              <li>老成员 1v1：入社前三个月有一位导师帮你排学习路线。</li>
+              <li>Demo Day：每学期一次公开演示，作品会被真实用户评价。</li>
+              <li>开放资料库：32 份整理过的课程、论文与工程笔记全部开放。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <div class="page-footer-inner">
+      <span>© 2026 NEXUS AI SOCIETY</span>
+      <a href="index.html">返回首页 ↑</a>
+    </div>
+  </footer>
+
+  <script src="particle-net.js" defer></script>
+  <script src="theme.js" defer></script>
+  <script src="particles.js" defer></script>
+  <script src="form.js" defer></script>
+</body>
+</html>

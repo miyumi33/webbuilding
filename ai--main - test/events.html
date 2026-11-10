@@ -1,0 +1,376 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="NEXUS AI 活动日历：工作坊、论文共读、分享会与校园黑客松，2026 年 11 月场次与参加方式。">
+  <meta name="theme-color" content="#07090e">
+  <title>活动日历 · NEXUS AI</title>
+  <script>
+    (() => {
+      const key = 'nexus-theme';
+      let theme;
+      try { theme = localStorage.getItem(key); } catch (error) {}
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.style.colorScheme = theme;
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', theme === 'light' ? '#f3ede2' : '#07090e');
+    })();
+  </script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080a08'/%3E%3Cpath d='M32 8c1.4 13.7 9.2 21.5 22.9 22.9C41.2 32.3 33.4 40 32 53.8 30.6 40 22.8 32.3 9.1 30.9 22.8 29.5 30.6 21.7 32 8Z' fill='%237fa9ff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="page.css">
+</head>
+<body class="subpage">
+  <div id="particle-stage" class="particle-stage" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <svg class="svg-defs" aria-hidden="true" focusable="false">
+    <symbol id="icon-spark" viewBox="0 0 32 32">
+      <path d="M16 1.5c.8 8.6 5.9 13.7 14.5 14.5-8.6.8-13.7 5.9-14.5 14.5C15.2 21.9 10.1 16.8 1.5 16 10.1 15.2 15.2 10.1 16 1.5Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24">
+      <path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.28 5.28l1.42 1.42M17.3 17.3l1.42 1.42M5.28 18.72l1.42-1.42M17.3 6.7l1.42-1.42" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24">
+      <path d="M20.5 14.2A8.7 8.7 0 0 1 9.8 3.5a8.7 8.7 0 1 0 10.7 10.7Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <header class="page-header">
+    <div class="page-header-inner">
+      <a class="brand" href="index.html" aria-label="NEXUS AI 首页">
+        <span class="brand-mark">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-spark"></use></svg>
+        </span>
+        <span class="brand-copy">
+          <span class="brand-name">NEXUS<span>/AI</span></span>
+          <span class="brand-sub">大学人工智能协会</span>
+        </span>
+      </a>
+      <div class="page-header-actions">
+        <a class="back-link" href="index.html"><span aria-hidden="true">←</span> 返回首页</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换浅色或深色模式" title="切换浅色或深色模式">
+          <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-sun"></use></svg>
+          <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-moon"></use></svg>
+          <span class="theme-toggle-label" aria-hidden="true">
+            <span class="theme-toggle-label--to-light">浅色</span>
+            <span class="theme-toggle-label--to-dark">深色</span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main" id="main">
+    <section class="page-hero">
+      <div class="page-wrap">
+        <span class="page-kicker">Events / 2026 Autumn</span>
+        <h1 class="page-title">活动日历</h1>
+        <p class="page-lede">
+          工作坊、论文共读、分享会与校园黑客松。所有活动对校内同学免费开放，
+          报名后我们会提前一天发提醒；临时来不了，说一声就好。
+        </p>
+        <div class="page-meta">
+          <span>本月 5 场</span>
+          <span>全部免费</span>
+          <span>报名截止 活动前 24 小时</span>
+          <span>地点 计科楼 / 图书馆 B1 / J202</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" id="honor">
+      <div class="page-wrap">
+        <div class="section-head">
+          <h2 class="section-title">校外公开课</h2>
+          <span class="section-note">Honor Tech Talk · 2026.11.13</span>
+        </div>
+
+        <div class="detail-grid">
+          <article class="card">
+            <div class="section-head">
+              <span class="feature-label">公开课 / 学院主办</span>
+              <span class="status-chip">参加方式见学院通知</span>
+            </div>
+            <h3 class="feature-title">与研发专家面对面：<br>荣耀技术分享公开课</h3>
+            <p class="body-copy">
+              通信与信息工程学院邀请荣耀专家进校，围绕品牌与产品、AI PC 技术展开分享；现场设互动问答与抽奖，
+              公开课后还有「荣耀·英特尔 AI 智造创新赛」的宣讲与指导，想参赛的同学可以留下来继续交流。
+            </p>
+
+            <div class="agenda">
+              <div class="agenda-item">
+                <time>13:00</time>
+                <div>
+                  <h4>荣耀技术分享公开课</h4>
+                  <p>13:00 — 14:30 · 品牌与产品、AI PC 技术分享，穿插现场问答与多轮抽奖。</p>
+                </div>
+              </div>
+              <div class="agenda-item">
+                <time>14:30</time>
+                <div>
+                  <h4>AI 智造创新赛宣讲</h4>
+                  <p>14:30 — 15:30 · 赛道设置、参赛要求与参与方式，研发专家现场答疑。</p>
+                </div>
+              </div>
+            </div>
+
+            <ul class="note-list spaced-top">
+              <li>计划参赛的同学建议自带笔记本电脑，便于现场交流与作品准备。</li>
+              <li>创新赛设 AI 创意与 AI 研发双赛道，征稿截止 11.22。</li>
+              <li>本站只做活动信息索引：不设报名入口，也不收集、不转载、不展示任何报名名单。</li>
+            </ul>
+
+            <div class="cta-row">
+              <span class="form-hint">参加方式与后续安排请以学院通知为准 · 来源：通信学院公众号 2026.11.06</span>
+            </div>
+          </article>
+
+          <aside class="card" aria-label="公开课信息">
+            <div class="fact-grid">
+              <div class="fact">
+                <span>TIME</span>
+                <strong>11.13 周五</strong>
+                <small>13:00 — 15:30</small>
+              </div>
+              <div class="fact">
+                <span>PLACE</span>
+                <strong>宝山校区 J202</strong>
+                <small>上海大学</small>
+              </div>
+              <div class="fact">
+                <span>HOST</span>
+                <strong>通信学院</strong>
+                <small>邀请荣耀研发专家</small>
+              </div>
+              <div class="fact">
+                <span>NOTE</span>
+                <strong>学院通知</strong>
+                <small>本站不设报名</small>
+              </div>
+            </div>
+            <p class="form-hint spaced-top">公开课免费参加，现场设互动环节与多轮抽奖；结束后可自愿留下参加赛事宣讲。</p>
+            <p class="form-hint">原文：<a class="inline-link" href="https://mp.weixin.qq.com/s/uky2Y3FL2woIPNtWeCMwow" target="_blank" rel="noopener noreferrer">通信学院公众号</a></p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" id="featured">
+      <div class="page-wrap">
+        <div class="section-head">
+          <h2 class="section-title">本期重点</h2>
+          <span class="section-note">Session 006 · Workshop</span>
+        </div>
+
+        <div class="detail-grid">
+          <article class="card">
+            <div class="section-head">
+              <span class="feature-label">Featured / 工作坊</span>
+              <span class="status-chip status-chip--open">报名中 · 剩 12 席</span>
+            </div>
+            <h3 class="feature-title">从 RAG 到 Agent：<br>让应用真正「会思考」</h3>
+            <p class="body-copy">
+              不讲空泛的概念。两个小时内，从零搭起一个能检索校园资料、规划任务并调用工具的 Agent，
+              把你的第一个想法带上线。带上电脑，我们会提供可运行的 Notebook 与数据集。
+            </p>
+
+            <div class="agenda">
+              <div class="agenda-item">
+                <time>19:00</time>
+                <div>
+                  <h4>为什么是 RAG</h4>
+                  <p>用一个真实校园问题，说明检索增强到底解决了什么、又没有解决什么。</p>
+                </div>
+              </div>
+              <div class="agenda-item">
+                <time>19:20</time>
+                <div>
+                  <h4>动手：切分、检索与重排</h4>
+                  <p>从文档切分到向量检索，现场跑通一条最小可用的 pipeline。</p>
+                </div>
+              </div>
+              <div class="agenda-item">
+                <time>20:15</time>
+                <div>
+                  <h4>让 Agent 调用工具</h4>
+                  <p>给模型加上工具与规划，看它如何自己决定下一步做什么。</p>
+                </div>
+              </div>
+              <div class="agenda-item">
+                <time>20:50</time>
+                <div>
+                  <h4>答疑与组队</h4>
+                  <p>带走一份能继续迭代的代码，也带走两三个可以一起做的同学。</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="cta-row">
+              <a class="button button-primary" href="apply.html?event=RAG%20%E5%B7%A5%E4%BD%9C%E5%9D%8A">
+                <span>报名这个工作坊</span>
+                <span class="button-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+                </span>
+              </a>
+              <span class="form-hint">提供晚餐 · 带上电脑 · 图书馆 B1 下沉广场进门右手</span>
+            </div>
+          </article>
+
+          <aside class="card" aria-label="工作坊信息">
+            <div class="fact-grid">
+              <div class="fact">
+                <span>TIME</span>
+                <strong>11.21 周六</strong>
+                <small>19:00 — 21:00</small>
+              </div>
+              <div class="fact">
+                <span>PLACE</span>
+                <strong>图书馆 B1</strong>
+                <small>创客空间 · Maker Space</small>
+              </div>
+              <div class="fact">
+                <span>HOST</span>
+                <strong>林教授</strong>
+                <small>计算机学院 · NLP Lab</small>
+              </div>
+              <div class="fact">
+                <span>SEATS</span>
+                <strong>48 / 60</strong>
+                <small>已报名 · 限额 60 人</small>
+              </div>
+            </div>
+            <ul class="note-list spaced-top">
+              <li>建议自带笔记本，Windows / macOS 都可以。</li>
+              <li>无需提前预习，现场会给出可直接运行的起点代码。</li>
+              <li>工作坊结束后可继续参加「开放实验室」，把想法做下去。</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" id="calendar">
+      <div class="page-wrap">
+        <div class="section-head">
+          <h2 class="section-title">11 月完整日历</h2>
+          <span class="section-note">November 2026</span>
+        </div>
+
+        <div class="calendar-list">
+          <div class="calendar-row">
+            <div class="calendar-date">
+              <strong>13</strong>
+              <span>NOV / 周五</span>
+            </div>
+            <div class="calendar-info">
+              <h3>荣耀技术分享公开课 + AI 智造创新赛宣讲</h3>
+              <p>宝山校区 J202 · 13:00 — 15:30 · 学院公开课，参加方式见学院通知</p>
+            </div>
+            <div class="calendar-side">
+              <span class="status-chip">学院通知</span>
+              <a class="row-link" href="#honor">查看详情 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+            </div>
+          </div>
+
+          <div class="calendar-row">
+            <div class="calendar-date">
+              <strong>14</strong>
+              <span>NOV / 周六</span>
+            </div>
+            <div class="calendar-info">
+              <h3>Paper Club #12：重读 Attention，从公式到代码</h3>
+              <p>计科楼 302 · 14:00 — 16:00 · 阅读材料已上传</p>
+            </div>
+            <div class="calendar-side">
+              <span class="status-chip">材料已上传</span>
+              <a class="row-link" href="index.html#resources">查看资料 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+            </div>
+          </div>
+
+          <div class="calendar-row">
+            <div class="calendar-date">
+              <strong>18</strong>
+              <span>NOV / 周三</span>
+            </div>
+            <div class="calendar-info">
+              <h3>Talk：当设计师开始写 Prompt</h3>
+              <p>线上 · 腾讯会议 · 19:30 · 与设计学院联合举办</p>
+            </div>
+            <div class="calendar-side">
+              <span class="status-chip status-chip--open">报名中</span>
+              <a class="row-link" href="apply.html?event=AI%20%C3%97%20Design%20Talk">报名 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+            </div>
+          </div>
+
+          <div class="calendar-row">
+            <div class="calendar-date">
+              <strong>21</strong>
+              <span>NOV / 周六</span>
+            </div>
+            <div class="calendar-info">
+              <h3>工作坊：从 RAG 到 Agent</h3>
+              <p>图书馆 B1 创客空间 · 19:00 — 21:00 · 林教授主讲</p>
+            </div>
+            <div class="calendar-side">
+              <span class="status-chip status-chip--open">剩 12 席</span>
+              <a class="row-link" href="apply.html?event=RAG%20%E5%B7%A5%E4%BD%9C%E5%9D%8A">报名 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+            </div>
+          </div>
+
+          <div class="calendar-row">
+            <div class="calendar-date">
+              <strong>28</strong>
+              <span>NOV / 周六</span>
+            </div>
+            <div class="calendar-info">
+              <h3>48h AI for Campus 校园黑客松</h3>
+              <p>学生创新中心 · 全天 · 组队报名，最多 4 人一队</p>
+            </div>
+            <div class="calendar-side">
+              <span class="status-chip status-chip--open">组队中</span>
+              <a class="row-link" href="apply.html?event=48h%20%E9%BB%91%E5%AE%A2%E6%9D%BE">报名 <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="page-wrap">
+        <div class="section-head">
+          <h2 class="section-title">参加须知</h2>
+          <span class="section-note">Before You Come</span>
+        </div>
+        <div class="card">
+          <ul class="note-list">
+            <li>活动全部免费，工作坊提供晚餐；报名后若无法到场，请提前在小程序或群里说一声。</li>
+            <li>工作坊与黑客松建议自带电脑；实验室提供开发板、传感器与 GPU 机时。</li>
+            <li>线上分享会会录播，回放与讲义统一放在学习资料库。</li>
+            <li>所有活动对校内同学开放，不要求先成为社团成员。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <div class="page-footer-inner">
+      <span>© 2026 NEXUS AI SOCIETY</span>
+      <a href="index.html">返回首页 ↑</a>
+    </div>
+  </footer>
+
+  <script src="particle-net.js" defer></script>
+  <script src="theme.js" defer></script>
+  <script src="particles.js" defer></script>
+</body>
+</html>
